@@ -11,18 +11,24 @@ def get_cat(url):
     img_tk = ImageTk.PhotoImage(img)
     return img_tk
 
+def new_get_img():
+    img = get_cat(url)
+    if img:
+        t_m.config(image=img)
+        t_m.image = img
+
+
 window = Tk()
 window.title("Caats")
-window.geometry(f"500x400+{window.winfo_screenwidth()//2-250}+{window.winfo_screenheight()//2-200}")
+window.geometry(f"500x440+{window.winfo_screenwidth()//2-250}+{window.winfo_screenheight()//2-220}")
 window.iconbitmap("ico_cat.ico")
 
 url = "https://cataas.com/cat"
-img = get_cat(url)
 
-t_m = Label(window, image=img)
+t_m = Label(window)
 t_m.pack()
 
-btn = Button(window, text="Получить кота")
+btn = Button(window, text="Получить кота", command=new_get_img)
 btn.pack()
 
 window.mainloop()
